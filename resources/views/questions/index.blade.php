@@ -13,14 +13,33 @@
 
                 <div class="card-body">
                   @foreach($questions->all() as $question)
-                    <div class="card-header">
-                        <a href="{{$question->url}}"><h2>{{$question->title}}</h2></a>
-                        <h5>Asked by: {{$question->users['name']}}</h5>
-                        <p>Updated: {{$question->updated_Date}}</p>
+                    <div class="media">
+                        <div class="d-flex flex-column counters">
+                            <div class="vote">
+                                <strong>{{$question->votes}} </strong>{{str_plural('vote', $question->votes)}}
+                            </div>
+                            <div class="status {{$question->status}}">
+                                <strong>{{$question->answers}} </strong>{{str_plural('answer', $question->anwers)}}
+                            </div>
+                            <div class="views">
+                                <strong>{{$question->views}} </strong>{{str_plural('view', $question->views)}}
+                            </div>
+                        </div>
+
+                        <div class="media-body mt-1">
+                            <div class="card">
+                                <div class="card-header">
+                                    <a href="{{$question->url}}"><h2>{{$question->title}}</h2></a>
+                                    <h5>Asked by: {{$question->users['name']}}</h5>
+                                    <p>Updated: {{$question->created_date}}</p>
+                                </div>
+                                <div class="card-body">
+                                    {{str_limit($question->body, 250)}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        {{str_limit($question->body, 250)}}
-                    </div>
+                    <hr>
                   @endforeach
                   
                 </div>

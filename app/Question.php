@@ -19,8 +19,8 @@ class Question extends Model
         $this->attributes['slug'] = str_slug($value);
     }
 
-    public function getUpdatedDateAttribute(){
-        return $this->updated_at->diffForHumans();
+    public function getCreatedDateAttribute(){
+        return $this->created_at->diffForHumans();
     }
 
     public function getBodyHtmlAttribute(){
@@ -29,5 +29,15 @@ class Question extends Model
 
     public function getUrlAttribute(){
         return route("questions.show", $this->slug);
+    }
+
+    public function getStatusAttribute(){
+        if($this->answers > 0){
+            If($this->best_answer_id){
+                return "answered-accepted";
+            }
+            return "answered";
+        }
+        return "unanswered";
     }
 }
