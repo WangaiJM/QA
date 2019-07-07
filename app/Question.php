@@ -22,4 +22,12 @@ class Question extends Model
     public function getUpdatedDateAttribute(){
         return $this->updated_at->diffForHumans();
     }
+
+    public function getBodyHtmlAttribute(){
+        return \Parsedown::instance()->text($this->body);
+    }
+
+    public function getUrlAttribute(){
+        return route("questions.show", $this->slug);
+    }
 }
