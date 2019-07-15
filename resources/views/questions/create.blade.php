@@ -11,15 +11,16 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="questions" method="POST">
+                    @include('inc.messages')
+                    <form action="/questions" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="title"> <h3>Title </h3></label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
                         </div>
                         <div class="form-group">
                             <label for="question"> <h3>Question</h3> </label>
-                            <textarea name="question" id="question" cols="30" rows="15" class="form-control"></textarea>
+                            <textarea name="question" id="question" cols="30" rows="15" class="form-control">{{old('question')}}</textarea>
                         </div>
                         <div class="form-group d-flex">
                             <input type="submit" value="Ask Question" class="btn btn-lg btn-primary ml-auto">

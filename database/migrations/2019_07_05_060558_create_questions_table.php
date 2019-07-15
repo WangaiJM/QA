@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('body');
+            $table->text('question');
             $table->integer('views')->unsigned()->default(0);
             $table->integer('answers')->unsigned()->default(0);
             $table->integer('votes')->default(0);

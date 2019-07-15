@@ -12,6 +12,7 @@
                 </div>
 
                 <div class="card-body">
+                @include('inc.messages')
                   @foreach($questions->all() as $question)
                     <div class="media">
                         <div class="d-flex flex-column counters">
@@ -34,7 +35,7 @@
                                     <p>Updated: {{$question->created_date}}</p>
                                 </div>
                                 <div class="card-body">
-                                    {{str_limit($question->body, 250)}}
+                                    {{str_limit($question->question, 250)}}
                                 </div>
                             </div>
                         </div>

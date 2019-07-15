@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     protected $fillable = [
-        'title', 'body'
+        'title', 'question'
     ];
 
     public function users(){
@@ -24,7 +24,7 @@ class Question extends Model
     }
 
     public function getBodyHtmlAttribute(){
-        return \Parsedown::instance()->text($this->body);
+        return \Parsedown::instance()->text($this->question);
     }
 
     public function getUrlAttribute(){
