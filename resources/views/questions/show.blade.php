@@ -15,9 +15,9 @@
                 </div>
                 <div class="container d-flex mb-2">
                     <div>
-                        <form action="questions/{{$question->id}}" method="POST">
+                        <form action="/questions/{{$question->id}}" method="POST" onsubmit="return confirm('Are you sure?')">
                             @csrf
-                            @method('PUT')
+                            @method('DELETE')
                             <div class="form-group">
                                 <label for="title" hidden>Title</label>
                                 <input type="text" class="form-control" hidden>
@@ -32,7 +32,7 @@
                         </form>
                     </div>
                     <div class="ml-auto">
-                        <a href="questions/{{$question->id}}/edit" class="btn btn-lg btn-primary">Edit Question</a>
+                        <a href="/questions/{{$question->id}}/edit" class="btn btn-lg btn-primary">Edit Question</a>
                     </div>
                 </div>
             </div>

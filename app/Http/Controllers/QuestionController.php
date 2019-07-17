@@ -68,7 +68,9 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Question::find($id);
+
+        return view('questions.edit', compact('question'));
     }
 
     /**
@@ -78,9 +80,14 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(QuestionRequest $request, $id)
     {
-        //
+        $question = Question::findOrFail($id);
+
+        $question->update($request->only('title', 'question'));
+
+        return redirect('/')->with('success', 'Question has been updated successfully');
+
     }
 
     /**
@@ -91,6 +98,10 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $question = Question::find($id);
+
+        $question->Delete();
+
+        return redirect('/')->with('success', "Question deleted successfully");
     }
 }
