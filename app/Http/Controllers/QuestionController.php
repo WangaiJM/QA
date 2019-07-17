@@ -70,6 +70,10 @@ class QuestionController extends Controller
     {
         $question = Question::find($id);
 
+        if(\Gate::denies('update', $question)){
+            abort(403, "Access Denied");
+        }
+
         return view('questions.edit', compact('question'));
     }
 
@@ -83,6 +87,10 @@ class QuestionController extends Controller
     public function update(QuestionRequest $request, $id)
     {
         $question = Question::findOrFail($id);
+
+        if(\Gate::denies('update', $question)){
+            abort(403, "Access Denied");
+        }
 
         $question->update($request->only('title', 'question'));
 
@@ -99,6 +107,10 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         $question = Question::find($id);
+
+        if(\Gate::denies('delete', $question)){
+            abort(403, "Access Denied");
+        }
 
         $question->Delete();
 
