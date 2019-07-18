@@ -6,10 +6,10 @@
         <div class="col-md-12">
             <div class="card">
                 
-                <div class="card-header d-flex">
-                    <h2>Questions</h2>
-                    <a href="questions/create" class="btn btn-lg btn-primary ml-auto"> Ask a Question </a>
-                </div>
+                    <div class="card-header d-flex">
+                        <h2>Questions</h2>
+                        <a href="questions/create" class="btn btn-lg btn-primary ml-auto"> Ask a Question </a>
+                    </div>
 
                 <div class="card-body">
                 @include('inc.messages')

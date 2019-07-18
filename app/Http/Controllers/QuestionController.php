@@ -29,6 +29,10 @@ class QuestionController extends Controller
      */
     public function create()
     {
+        if(\Gate::denies('create', $question)){
+            return redirect('/login');
+        }
+
         return view('questions.create');
     }
 
